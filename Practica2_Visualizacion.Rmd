@@ -136,10 +136,13 @@ p2
 ```{r Solucion ejercicio 1}
 load("data/weatherAUS.RData")
 grafico1 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp))
+grafico1
 
 g <- grafico1+geom_point()
+g
 
 grafico2<- ggplot(ds, aes(x = MinTemp, y = MaxTemp, colour=RainTomorrow))+geom_point()
+grafico2
 
 grafico3 <- grafico2+ggtitle("Grafico de dispersion MinTemp frente MaxTemp")
 grafico3
@@ -188,13 +191,16 @@ load("data/iris_tidy.Rdata")
 str(iris) #Iris tiene 5 variables
 
 iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point()
+iris.grafico1
 
 iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour=Part))+geom_point()
+iris.grafico2
 
 g1 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point() + facet_grid(Measure~.)
+g1
 
 g2 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point() + facet_grid(.~Measure)
-
+g2
 #Los valores se pueden comparar mejor con la disposicion en filas ya que se ven mucho mas claros los datos de las variables.
 
 iris.grafico3 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour=Part))+geom_jitter()
@@ -280,12 +286,15 @@ load("data/Ejercicio4_Data.Rdata")
 str(DatosEjer4) #Este dataset tiene 3 variables que son "fecha", "fabricante" y "ventas"
 
 g1 <- ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour=Fabricante))+geom_point()
+g1
 
 #En este grafico podemos observar que Microsoft tiene mas ventas que Apple al largo de los años, pero para poder apreciar más concretamente en que momentos vende más uno que otro es mejor hacer un grafico que una los puntos.
 
 g2 <- ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, colour=Fabricante))+geom_line()+geom_point()
+g2
 
 g3 <- ggplot(DatosEjer4, aes(x = Fecha, y = Ventas, group=Fabricante))+geom_line(aes(linetype=Fabricante))+geom_point()
+g3
 
 g4 <- g3+ggtitle("Ventas mensuales de diferentes compañías tecnológicas")
 g4
