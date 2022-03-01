@@ -368,7 +368,19 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 ```{r Solucion ejercicio 6}
 load("data/weatherAUS_distributions.RData")
 
+s1 <- ggplot(data=ds, aes(x=Year, y = MinTemp))+geom_boxplot()
+s1
 
+s2 <- ggplot(data=ds, aes(x=Year, y = MinTemp, fill=Year))+geom_violin()
+s2
+
+s3 <- s2 + labs(title = "Distribución de temperaturas máximas por año, x = Año, y = Temperatura (ºC)")
+s3
+
+s4 <- s3 + theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+s4
+
+ggsave("figure/Ejercicio6.pdf")
 ```
 
 ## Histogramas con **ggplot2**
