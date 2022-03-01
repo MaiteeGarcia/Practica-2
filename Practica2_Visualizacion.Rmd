@@ -158,7 +158,21 @@ dev.off()
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
 ```{r Solucion ejercicio 2}
+g1 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, colour=RainToday))+geom_point()
+g1
 
+g2<-ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape=RainToday))+geom_point()
+g2
+
+g3 <- g1+ggtitle("Grafico de dispresion")
+g3
+
+
+#La informacion del grafico se observa mejor con la representacion en color ya que en forma se mezclan y no se ve claro.
+
+pdf("Ejercicio2.pdf")
+g3
+dev.off()
 ```
 
 ### **Ejercicio 3**
