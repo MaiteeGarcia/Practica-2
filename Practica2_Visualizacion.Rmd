@@ -187,7 +187,27 @@ dev.off()
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
+load("data/iris_tidy.Rdata")
+str(iris) #Iris tiene 5 variables
 
+iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point()
+
+iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour=Part))+geom_point()
+
+g1 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point() + facet_grid(Measure~.)
+
+g2 <- ggplot(iris.tidy, aes(x = Species, y = Value))+geom_point() + facet_grid(.~Measure)
+
+#Los valores se pueden comparar mejor con la disposicion en filas ya que se ven mucho mas claros los datos de las variables.
+
+iris.grafico3 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour=Part))+geom_jitter()
+iris.grafico3
+
+#Se observa que utilizando geom_jittel() los puntos salen dispersados por todo el grafico, es decir, los datos no están exactamente en las coordenadas mientras que usando geom_point los puntos salen unicamente en la Specie (coordenadas) a la que ue pertenece.
+
+pdf("Ejercicio3.pdf")
+iris.grafico3
+dev.off()
 ```
 
 ## Gráficos de línea con **ggplot2**
