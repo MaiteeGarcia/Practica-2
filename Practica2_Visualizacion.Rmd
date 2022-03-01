@@ -448,7 +448,28 @@ ggplot(data=dataset_hist1, aes(x=AGE)) +
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio7.pdf``.
 
 ```{r Solucion ejercicio 7}
+dataset <- read.table("http://assets.datacamp.com/blog_assets/chol.txt", header = T)
+dataset
 
+g1 <- ggplot(data = dataset, aes(x = HEIGHT)) + geom_histogram()
+g1
+
+g2 <- g1 + labs(title = "Histograma de la variable Altura, x = Altura (cm), y = Frecuencia")
+g2
+
+g3 <- ggplot(data = dataset, aes(x = HEIGHT)) + geom_histogram(breaks = seq(155,195, by = 2), bins = 20) + labs(title = "Historiograma de la variable Altura", x ="Altura", y ="Frecuencia")
+g3
+
+g4 <- ggplot(data = dataset, aes(x = HEIGHT)) + geom_histogram(breaks = seq(155,195, by = 2), bins = 20, fill = "blue", col = "red", alpha = 0.5) + labs(title = "Historiograma de la variable Altura", x ="Altura", y ="Frecuencia")
+g4
+
+g5 <- ggplot(data = dataset, aes(x = HEIGHT)) + geom_histogram((aes(y = stat(density))),breaks = seq(155,195, by = 2), bins = 20, fill = "blue", col = "red", alpha = 0.5) + geom_density(col = "green")+labs(title = "Historiograma de la variable Altura", x ="Altura", y ="Frecuencia")
+g5
+
+g6 <- ggplot(data = dataset, aes(x = HEIGHT)) + geom_histogram((aes(y = stat(density))),breaks = seq(155,195, by = 2), bins = 20, fill = "blue", col = "red", alpha = 0.5) + geom_density(col = "green")+facet_grid(.~SMOKE)+labs(title = "Historiograma de la variable SMOKE", x ="Smoke", y ="Frecuencia")
+g6
+
+ggsave("figure/Ejercicio7.pdf")
 ```
 
 ## Gráficos de barras con **ggplot2**
